@@ -1,25 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Components
+import { Typography } from "@mui/material";
+import Slider from "./components/slider";
+// Styles
+import S from "./style";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <S.Container>
+      <S.Content>
+        <Slider />
+      </S.Content>
+      <Typography variant="body2" color="text.secondary" align="center">Drag to change image</Typography>
+    </S.Container>
   );
 }
 
