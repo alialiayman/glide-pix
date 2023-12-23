@@ -1,12 +1,10 @@
-import { animated } from "react-spring";
 import styled from "styled-components";
 import Constants from "../../constants";
 
 const S = {};
 
-S.Container = styled(animated.div)`
+S.Container = styled.div`
   display: flex;
-  transition: transform 0.3s ease-out;
   cursor: ${(props) => (props.dragging ? "grabbing" : "grab")};
 `;
 

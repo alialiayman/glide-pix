@@ -1,50 +1,43 @@
-import React from "react";
+import { useRef, useState } from "react";
+
 import Draggable from "react-draggable";
-import { useSpring } from "react-spring";
 // Styles
+import Constants from "../../constants";
 import S from "./style";
 
 const images = [
-  "https://placekitten.com/640/400",
-  "https://placekitten.com/640/640",
-  "https://placekitten.com/1000/800",
+  `https://placekitten.com/${Constants.MAX_WIDTH}/${Constants.MAX_HEIGHT}`,
+  `https://placekitten.com/${Constants.MAX_WIDTH}/${
+    Constants.MAX_HEIGHT + 200
+  }`,
+  `https://placekitten.com/${Constants.MAX_WIDTH}/${
+    Constants.MAX_HEIGHT + 300
+  }`,
+  `https://placekitten.com/${Constants.MAX_WIDTH + 300}/${
+    Constants.MAX_HEIGHT + 300
+  }`,
 ];
 
 const Slider = () => {
-  const [index, setIndex] = React.useState(0);
-  const [dragging, setDragging] = React.useState(false);
-  const handleDrag = (e, ui) => {
-    console.log("📢[index.tsx:16]: ui.deltaX: ", ui.deltaX);
-    console.log("📢[index.tsx:17]: index: ", index);
+  const [dragging, setDragging] = useState(false);
+  const ref = useRef();
 
-    if (ui.deltaX > 50) {
-      setIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-    } else if (ui.deltaX < -50) {
-      setIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    }
-  };
-
-  const { x } = useSpring({
-    x: index * -100,
-    config: {
-      tension: 300,
-      friction: 20,
-    },
-  });
   return (
     <Draggable
+      nodeRef={ref}
       axis="x"
-      onDrag={handleDrag}
       onStart={() => setDragging(true)}
       onStop={() => setDragging(false)}
+      bounds={{
+        top: 0,
+        left: -(images.length - 1) * Constants.MAX_WIDTH,
+        right: 0,
+        bottom: 0,
+      }}
     >
-      <S.Container dragging={dragging}
-        style={{
-          transform: x.to((value) => `translateX(${value}%)`),
-        }}
-      >
+      <S.Container $dragging={dragging.toString()} ref={ref}>
         {images.map((url, i) => (
-          <S.Cover src={url} key={i}   />
+          <S.Cover src={url} key={i} />
         ))}
       </S.Container>
     </Draggable>
