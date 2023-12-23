@@ -8,13 +8,11 @@ import S from "./style";
 const images = [
   `https://placekitten.com/${Constants.MAX_WIDTH}/${Constants.MAX_HEIGHT}`,
   `https://placekitten.com/${Constants.MAX_WIDTH}/${
-    Constants.MAX_HEIGHT + 200
+    Constants.MAX_HEIGHT - 150
   }`,
-  `https://placekitten.com/${Constants.MAX_WIDTH}/${
-    Constants.MAX_HEIGHT + 300
-  }`,
-  `https://placekitten.com/${Constants.MAX_WIDTH + 300}/${
-    Constants.MAX_HEIGHT + 300
+  `https://placekitten.com/${Constants.MAX_WIDTH - 40}/${Constants.MAX_HEIGHT}`,
+  `https://placekitten.com/${Constants.MAX_WIDTH - 300}/${
+    Constants.MAX_HEIGHT
   }`,
 ];
 
