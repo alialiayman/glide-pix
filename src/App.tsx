@@ -10,8 +10,9 @@ import S from "./style";
 
 const images = [
   "https://placekitten.com/640/400",
-  "https://placekitten.com/300/300",
-  "https://placekitten.com/1000/800",
+  "https://placekitten.com/640/350",
+  "https://placekitten.com/500/500",
+  "https://placekitten.com/200/600",
 ];
 
 const leftMargin = window.innerWidth / 2 - Constants.CONTENT_WIDTH / 2;
